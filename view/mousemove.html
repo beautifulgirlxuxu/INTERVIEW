@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html, body {
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+      
+        // ajax 锁屏无法实现事件，出现浏览器崩溃，
+        // 函数节流
+        //  mousemove, scroll 加载数据，出现显示， ajax,函数执行过于频繁，导致内存使用泛滥，性能下降，甚至页面崩溃
+        // 核心目标: 减少执行，在一定50ms, 时间内执行一次
+        // 闭包应用场合： throttle节流
+        let throttle = (fn, delay = 1000) => {
+            let starttime = 0
+            return function (...args) {
+                let curTime = new Date()
+                if(curTime-starttime >= delay) {
+                    fn.apply(this, args)
+                    starttime = curTime
+                }
+            }
+        }
+
+        function doMouseMove (event) {
+
+            console.log(event.clientX,event.clientY)
+            }
+            let slowMouseMove = throttle(doMouseMove) 
+        const oBox = document.querySelector('.box');
+        oBox.addEventListener('mousemove', (event) => {
+            slowMouseMove(event)
+            // console.log(event.clientX,event.clientY)
+        })
+    </script>
+</body>
+<html>
