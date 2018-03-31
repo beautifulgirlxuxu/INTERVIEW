@@ -1,5 +1,5 @@
 // apply call bind的用法与区别
-
+// call和apply改变了函数的this上下文后便执行该函数,而bind则是返回改变了上下文后的一个函数。
 function Person(name){
   this.name = name;
 }
