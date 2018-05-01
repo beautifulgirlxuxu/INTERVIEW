@@ -49,3 +49,4 @@ Vue服务端渲染（SSR）：将Vue实例在服务端渲染成HTML字符串，�
 pwa：能让我们开发的web应用能像原生app一样使用。
 
 ES6：箭头函数，模块化，promise，class，symbols。
+map()函数：将原数组根据规则映射到新数组。callback一定要有返回值。不会改变原数组。
