@@ -1,20 +1,20 @@
 // apply call bind：改变函数执行时的上下文
 // call和apply改变了函数的this上下文后便执行该函数,而bind则是返回改变了上下文后的一个函数。
-function Person(name){
-  this.name = name;
-}
-Person.prototype = {
-//   constructor: Person,
-  showName: function(){
-    console.log(this.name);
-  }
-}
-var person = new Person('qianlong');
-//   person.showName();
+// function Person(name){
+//   this.name = name;
+// }
+// Person.prototype = {
+// //   constructor: Person,
+//   showName: function(){
+//     console.log(this.name);
+//   }
+// }
+// var person = new Person('qianlong');
+// //   person.showName();
 
-var animal = {
-    name: 'cat'
-}
+// var animal = {
+//     name: 'cat'
+// }
 // Person.prototype.showName.call(animal);
 // Person.prototype.showName.apply(animal);
 // Person.prototype.showName.bind(animal)();
@@ -45,17 +45,24 @@ var animal = {
 // console.log(Object.prototype.toString.call(abc) == '[object Function]')
 
 // 用作继承
-var Person = function(name,age) {
-    this.name = name;
-    this.age = age;
+// var Person = function(name,age) {
+//     this.name = name;
+//     this.age = age;
+// }
+// var Girl = function(name, age) {
+//     Person.call(this, name, age)
+// }
+// var Boy = function(name, age) {
+//     Person.apply(this, arguments)
+// }
+// var g1 = new Girl('qing', 18)
+// var b1 = new Boy('xu', 22)
+// console.log(g1.name + g1.age + '岁了')
+// console.log(b1.name + b1.age + '岁了');
+
+function send(a,b,c) {
+    // var a = 2;
+    console.log(a,b,c);
 }
-var Girl = function(name, age) {
-    Person.call(this, name, age)
-}
-var Boy = function(name, age) {
-    Person.apply(this, arguments)
-}
-var g1 = new Girl('qing', 18)
-var b1 = new Boy('xu', 22)
-console.log(g1.name + g1.age + '岁了')
-console.log(b1.name + b1.age + '岁了');
+var arr = [1,2,3]
+console.log(send.apply(this,arr));//apply传的参数作为调用函数到的参数使用
