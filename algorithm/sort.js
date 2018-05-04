@@ -9,4 +9,12 @@ function sort(arr) {
 }
 
 var arr1 = [1,3,4,5,7,9];
-console.log(sort(arr1));
+// console.log(sort(arr1));
+
+
+// function br(a,b,c) {
+//     arguments[2] = 10;
+//     console.log(c);
+// }
+
+// br(1,2,3)
