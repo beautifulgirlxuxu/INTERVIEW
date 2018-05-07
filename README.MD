@@ -97,3 +97,6 @@ Object.key()：返回一个给定对象自身所有可枚举属性和方法的�
 数组是同一数据类型的集合，有下标范围，从0开始；而数列是一组有规律的数字。
 
 http://github.com/beautifulgirlxuxu
+
+优化CSS图片加载技术：CSS sprite、SVG sprite、Base64
+CSS选择器权重问题：！important（infinity） > 行间样式（1000） > id选择器（100） > class选择器||属性选择器（10） > 标签选择器（1） > 通配符选择器（0）
