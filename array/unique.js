@@ -85,3 +85,12 @@ function Unique4(arr) {
 }
 console.log('1' === 1);//false
 console.log('1' == 1);//true
+
+// 利用reduce函数
+let result = arr.sort().reduce((init, current)=>{
+    if(init.length===0 || init[init.length-1]!==current){
+        init.push(current);
+    }
+    return init;
+}, []);
+
