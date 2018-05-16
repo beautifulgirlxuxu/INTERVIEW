@@ -1,9 +1,10 @@
-var deepCopy= function(source) { 
-    var result={};
+function deepCopy (source) { 
+    var result = {};//定义一个空对象
     for (var key in source) {
-          result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key];
-       } 
-       return result; 
+        //遍历对象的属性，如果是object，递归调用自身，否则直接存入新对象中
+        result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key];
+    } 
+    return result; //返回这个新对象与源对象已经没有任何联系了
 }
 
 
@@ -12,3 +13,12 @@ var deepCopy= function(source) {
 function deepCopy(o){
     return JSON.parse(JSON.stringify(o));
 }
+
+var obj = {
+    name: 'xuyanqing',
+    age: 21,
+    sex: 'female'
+}
+
+var copyObj = deepCopy(obj);
+console.log(copyObj);
