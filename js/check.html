@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .code {  
+        width: 80px;
+        height: 40px;
+        font-family: Arial;  
+        font-style: italic;  
+        font-weight: bold;  
+        font-size: 20px;
+        border: 0;  
+        letter-spacing: 1px;  
+        color: #dd4545;  
+        margin-left: 35px;
+    }  
+    #checkSuc {
+        position: absolute;
+        display: inline-block;
+        margin-left: 460px;
+        margin-top: -32px;
+    }
+    </style>
+</head>
+<body>
+    <div style="width:495px;margin-bottom:40px;font-size: 0;">  
+        <input type="button" id="checkCode" class="code" onclick="createCode()" />
+        <input type="text" id="input" style="border:1px solid #c9c9c9;width:292px;height:42px; margin-left:25px;font-size:16px;text-indent:22px;" / ><br>     
+        <a href="#" style="display: block; color: hotpink;" onclick="createCode()">看不清楚</a>
+        <input type="button" id="checkSuc" value="验证" onclick="validate()" />  
+    </div> 
+</body>
+<script>
+    var code; //在全局定义验证码      
+//产生验证码     
+window.onload = function() {  
+    createCode();  
+}  
+function createCode() {  
+    code = "";  
+    var codeLength = 5; //验证码的长度     
+    var checkCode = document.getElementById("checkCode");  
+    var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',  
+        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数     
+    for(var i = 0; i < codeLength; i++) { //循环操作     
+        var charIndex = Math.floor(Math.random() * 36); //取得随机数的索引     
+        code += random[charIndex]; //根据索引取得随机数加到code上     
+    }  
+    checkCode.value = code; //把code值赋给验证码     
+}  
+//校验验证码     
+function validate() {  
+    var checkSuccess = document.getElementById('checkSuc');
+    // console.log(checkSuccess);
+    var inputCode = document.getElementById("input").value.toUpperCase(); //取得输入的验证码并转化为大写           
+    if(inputCode.length <= 0) { //若输入的验证码长度为0     
+        alert("请输入验证码！"); //则弹出请输入验证码     
+    } else if(inputCode != code) { //若输入的验证码与产生的验证码不一致时     
+        // alert("验证码输入错误！"); //则弹出验证码输入错误   
+        checkSuccess.value = "验证码输入错误";  
+        createCode(); //刷新验证码     
+    } else { //输入正确时     
+        // alert("验证成功！"); //弹出验证成功   
+        checkSuccess.value = "验证成功"; 
+    }  
+}  
+
+</script>
+</html>
