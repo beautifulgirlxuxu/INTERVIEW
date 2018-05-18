@@ -13,13 +13,14 @@ function ajax(method, url, data) {
             }
         };
         request.open(method,url);
-        request.send(data);
+        request.send(data);//即使不发送数据也要调用send方法，send（none)
     })
 }
 
 var p = ajax('GET', '/data/table');
 p.then(resolve(data)).catch(reject(status));
 
+//浏览器兼容
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
