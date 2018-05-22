@@ -13,7 +13,7 @@ function ajax(method, url, data) {
             }
         };
         request.open(method,url);
-        request.send(data);//即使不发送数据也要调用send方法，send（none)
+        request.send(data);//即使不发送数据也要调用send方法，send（)
     })
 }
 
